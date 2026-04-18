@@ -1,7 +1,7 @@
 const frameCount = 105; // Updated sequence after user optimization
 const getFramePath = (index) => {
   // Mapping to the verified high-quality frames folder
-  return `/ watermelon_permanent_frames/ezgif-frame-${index.toString().padStart(3, '0')}.png`;
+  return `/watermelon_permanent_frames/ezgif-frame-${index.toString().padStart(3, '0')}.png`;
 };
 
 // DOM Elements
