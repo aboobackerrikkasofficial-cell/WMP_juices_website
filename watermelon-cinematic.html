@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watermelon 4K Cinematic Experience</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --accent-color: #ff2d55;
+            --text-color: #111111;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            height: 800vh; /* Increased scroll area for more granularity */
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            background: #ffffff;
+        }
+
+        canvas {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            /* Edge-preserving sharpening and HDR simulation */
+            filter: contrast(1.15) saturate(1.3) brightness(1.1) drop-shadow(0 0 50px rgba(0,0,0,0.8));
+            image-rendering: high-quality;
+        }
+
+        /* Cinematic Overlays */
+        .content-section {
+            position: relative;
+            height: 200vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            pointer-events: none;
+            padding: 0 10%;
+        }
+
+        .title-wrapper {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: blur(10px);
+        }
+
+        .title-wrapper.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            letter-spacing: -3px;
+            background: linear-gradient(180deg, #fff 30%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .description {
+            max-width: 500px;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.5);
+            margin-top: 1rem;
+            line-height: 1.8;
+            font-size: 1rem;
+            font-weight: 200;
+            letter-spacing: 1px;
+        }
+
+        /* Loading Screen */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .loader-bar {
+            width: 240px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-color);
+            transition: width 0.4s cubic-bezier(0.1, 0.7, 1.0, 0.1);
+        }
+
+        .loading-text {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: #444;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Ambient Effects */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            pointer-events: none;
+            background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.7) 100%);
+        }
+
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .dot-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 15px;
+            cursor: pointer;
+        }
+
+        .dot-label {
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+        }
+
+        .dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dot-container.active .dot {
+            background: var(--accent-color);
+            transform: scale(2.5);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        .dot-container.active .dot-label {
+            opacity: 1;
+            transform: translateX(0);
+            color: var(--accent-color);
+        }
+
+        /* Scroll Progress Line */
+        .scroll-progress-line {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 0%;
+            background: linear-gradient(to bottom, var(--accent-color), transparent);
+            z-index: 20;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <h2 style="font-weight: 200; letter-spacing: 15px; font-size: 1rem; color: #888;">CINEMATIC SERIES</h2>
+        <h1 style="background: none; -webkit-text-fill-color: #fff; margin: 0; font-size: 2rem;">WATERMELON</h1>
+        <div class="loader-bar">
+            <div class="loader-progress" id="progress"></div>
+        </div>
+        <div class="loading-text" id="status-text">INITIALIZING 8K ASSETS</div>
+    </div>
+
+    <div class="scroll-progress-line" id="scroll-line"></div>
+    <div class="grain"></div>
+    <div class="vignette"></div>
+
+    <div id="canvas-container">
+        <canvas id="watermelon-canvas"></canvas>
+    </div>
+
+    <div class="nav-dots">
+        <div class="dot-container active" onclick="scrollToSection(0)">
+            <span class="dot-label">Origin</span>
+            <div class="dot"></div>
+        </div>
+        <div class="dot-container" onclick="scrollToSection(1)">
+            <span class="dot-label">Detail</span>
+            <div class="dot"></div>
+        </div>
+        <div class="dot-container" onclick="scrollToSection(2)">
+            <span class="dot-label">Vibrancy</span>
+            <div class="dot"></div>
+        </div>
+        <div class="dot-container" onclick="scrollToSection(3)">
+            <span class="dot-label">Infinity</span>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <section class="content-section">
+        <div class="title-wrapper visible">
+            <div class="subtitle">Nature Reimagined</div>
+            <h1>The Edge of <br>Fresh</h1>
+            <p class="description">Witness the fusion of organic micro-textures and digital precision. A journey through the anatomy of a summer icon.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="title-wrapper">
+            <div class="subtitle">Intelligent Clarity</div>
+            <h1>Surface <br>Realism</h1>
+            <p class="description">Advanced upscaling algorithms reveal hidden depths in every fiber. Experience the micro-geometry of nature's design.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="title-wrapper">
+            <div class="subtitle">Dynamic Color</div>
+            <h1>Living <br>Colors</h1>
+            <p class="description">HDR-enhanced spectrum brings the deep mahogany greens and hyper-saturated crimsons to life like never before.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="title-wrapper">
+            <div class="subtitle">Pure Motion</div>
+            <h1>Infinite <br>Flow</h1>
+            <p class="description">Smooth interpolation bridging 168 moments into a singular, breathtaking stream of cinematic consciousness.</p>
+        </div>
+    </section>
+
+    <script>
+        const canvas = document.getElementById('watermelon-canvas');
+        const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
+        const progressLine = document.getElementById('progress');
+        const statusText = document.getElementById('status-text');
+        const loader = document.getElementById('loader');
+        const scrollLine = document.getElementById('scroll-line');
+
+        const frameCount = 195;
+        const frames = [];
+        let loadedCount = 0;
+
+        // Configuration for ultra-smoothness
+        const config = {
+            smoothing: 0.1, // Smooth-scroll interpolation
+            motionBlurIntensity: 2.5,
+            parallaxIntensity: 30,
+            zoomIntensity: 0.05
+        };
+
+        let currentScroll = 0;
+        let smoothScroll = 0;
+        let lastScroll = 0;
+        let velocity = 0;
+
+        // Helper to get image path (Vite serves public files at /)
+        const getFramePath = (index) => {
+            const num = String(index).padStart(3, '0');
+            return `/ watermelon_permanent_frames/ezgif-frame-${num}.png`;
+        };
+
+        // Loading strategy
+        async function loadFrames() {
+            const batchSize = 10;
+            for (let i = 1; i <= frameCount; i++) {
+                const img = new Image();
+                img.src = getFramePath(i);
+                
+                const promise = new Promise((resolve) => {
+                    img.onload = () => {
+                        frames[i-1] = img;
+                        loadedCount++;
+                        updateProgress();
+                        resolve();
+                    };
+                    img.onerror = () => {
+                        console.error(`Failed to load frame ${i}`);
+                        loadedCount++; // Skip but continue
+                        resolve();
+                    }
+                });
+
+                if (i % batchSize === 0) {
+                    await promise; // Small delay to prevent browser locking
+                    statusText.innerText = `REFINING FRAMES: ${i}/${frameCount}`;
+                }
+            }
+            
+            // Allow time for final rendering
+            setTimeout(completeLoading, 1000);
+        }
+
+        function updateProgress() {
+            const percent = (loadedCount / frameCount) * 100;
+            progressLine.style.width = `${percent}%`;
+        }
+
+        function completeLoading() {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.remove(), 1000);
+            document.body.style.overflowY = 'auto'; // Re-enable scroll
+        }
+
+        function resize() {
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = window.innerWidth * dpr;
+            canvas.height = window.innerHeight * dpr;
+            canvas.style.width = `${window.innerWidth}px`;
+            canvas.style.height = `${window.innerHeight}px`;
+            ctx.scale(dpr, dpr);
+            render(smoothScroll);
+        }
+
+        function render(progress) {
+            if (frames.length === 0) return;
+
+            // Frame Selection Logic (interpolated)
+            const virtualFrame = progress * (frameCount - 1);
+            const indexA = Math.floor(virtualFrame);
+            const indexB = Math.min(indexA + 1, frameCount - 1);
+            const blend = virtualFrame - indexA;
+
+            const imgA = frames[indexA];
+            const imgB = frames[indexB];
+
+            if (!imgA || !imgB) return;
+
+            // Visual Setup
+            const canvasAspect = window.innerWidth / window.innerHeight;
+            const imgAspect = imgA.width / imgA.height;
+            
+            let drawWidth, drawHeight, offsetX, offsetY;
+
+            if (canvasAspect > imgAspect) {
+                drawWidth = window.innerWidth;
+                drawHeight = window.innerWidth / imgAspect;
+                offsetX = 0;
+                offsetY = (window.innerHeight - drawHeight) / 2;
+            } else {
+                drawHeight = window.innerHeight;
+                drawWidth = window.innerHeight * imgAspect;
+                offsetX = (window.innerWidth - drawWidth) / 2;
+                offsetY = 0;
+            }
+
+            // Depth effects
+            const speedScale = 1 + (Math.abs(velocity) * 2);
+            const zoom = 1 + (progress * config.zoomIntensity);
+            const parallaxX = (progress - 0.5) * config.parallaxIntensity;
+            const parallaxY = (progress - 0.5) * (config.parallaxIntensity / 2);
+
+            // Clear and Transform
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+            ctx.save();
+            ctx.translate(window.innerWidth/2, window.innerHeight/2);
+            ctx.scale(zoom, zoom);
+            ctx.translate(-window.innerWidth/2, -window.innerHeight/2);
+
+            // Layered Rendering for Frame Blending
+            ctx.globalAlpha = 1.0;
+            ctx.drawImage(imgA, offsetX + parallaxX, offsetY + parallaxY, drawWidth, drawHeight);
+
+            if (blend > 0.01) {
+                ctx.globalAlpha = blend;
+                ctx.drawImage(imgB, offsetX + parallaxX, offsetY + parallaxY, drawWidth, drawHeight);
+            }
+
+            // Motion Blur Emulation (Directional Ghosting)
+            if (Math.abs(velocity) > 0.002) {
+                ctx.globalAlpha = Math.min(Math.abs(velocity) * 10, 0.4);
+                const blurShift = velocity * 1500;
+                ctx.drawImage(imgA, offsetX + parallaxX + blurShift, offsetY + parallaxY, drawWidth, drawHeight);
+            }
+
+            ctx.restore();
+        }
+
+        function update() {
+            // Scroll Calculations
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            currentScroll = window.pageYOffset / maxScroll;
+            
+            // Smooth LERP for buttery motion
+            smoothScroll += (currentScroll - smoothScroll) * config.smoothing;
+            
+            // Clamp progress
+            const clampedProgress = Math.min(Math.max(smoothScroll, 0), 1);
+            
+            velocity = smoothScroll - lastScroll;
+            lastScroll = smoothScroll;
+
+            render(clampedProgress);
+
+            // GUI Updates
+            scrollLine.style.height = `${clampedProgress * 100}%`;
+            
+            const sections = document.querySelectorAll('.title-wrapper');
+            const dots = document.querySelectorAll('.dot-container');
+            
+            sections.forEach((sec, i) => {
+                const sectionProgress = (i / (sections.length - 1));
+                const dist = Math.abs(clampedProgress - sectionProgress);
+                
+                if (dist < 0.15) {
+                    sec.classList.add('visible');
+                    dots[i].classList.add('active');
+                } else {
+                    sec.classList.remove('visible');
+                    dots[i].classList.remove('active');
+                }
+            });
+
+            requestAnimationFrame(update);
+        }
+
+        function scrollToSection(index) {
+            const sections = document.querySelectorAll('.content-section');
+            sections[index].scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Init
+        window.addEventListener('resize', resize);
+        resize();
+        loadFrames();
+        update();
+
+    </script>
+</body>
+</html>

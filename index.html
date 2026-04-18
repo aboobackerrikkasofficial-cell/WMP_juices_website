@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MWP Juice | Premium Cold-Pressed Refreshment | Kasaragod, Kerala</title>
+    <meta name="description" content="Elevate your hydration with MWP Juice. 100% Organic, Cold-Pressed luxury fruit juices handcrafted in Kasaragod. No added sugar, just pure nature.">
+    <meta name="keywords" content="Cold Pressed Juice, Organic Juice, MWP Juice, Kasaragod Juice, Healthy Drinks Kerala, Premium Juice India">
+    
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://mwpjuice.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mwpjuice.com/">
+    <meta property="og:title" content="MWP Juice | Premium Cold-Pressed Refreshment">
+    <meta property="og:description" content="100% Organic, Cold-Pressed luxury juices handcrafted in Kasaragod. Refresh your thirst with nature's vibrant burst.">
+    <meta property="og:image" content="https://mwpjuice.com/mwp_juice_social_preview.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mwpjuice.com/">
+    <meta property="twitter:title" content="MWP Juice | Premium Cold-Pressed Refreshment">
+    <meta property="twitter:description" content="100% Organic, Cold-Pressed luxury juices handcrafted in Kasaragod. Refresh your thirst with nature's vibrant burst.">
+    <meta property="twitter:image" content="https://mwpjuice.com/mwp_juice_social_preview.png">
+
+    <!-- Favicon (Stubs) -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Structured Data: Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "MWP Juice",
+      "image": "https://mwpjuice.com/mwp_juice_social_preview.png",
+      "@id": "https://mwpjuice.com",
+      "url": "https://mwpjuice.com",
+      "telephone": "+9188072646",
+      "priceRange": "₹₹",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "The Lab",
+        "addressLocality": "Kasaragod",
+        "addressRegion": "Kerala",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 12.5101,
+        "longitude": 74.9852
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "21:00"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: Product List -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Watermelon Bliss",
+          "description": "Nature's hydration miracle. Cold-pressed to perfection.",
+          "url": "https://mwpjuice.com/#juices-section"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Mango Majesty",
+          "description": "The king of fruits, captured in a luscious, velvety blend.",
+          "url": "https://mwpjuice.com/#juices-section"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Pineapple Punch",
+          "description": "Tropical sunshine with a vibrant, anti-inflammatory kick.",
+          "url": "https://mwpjuice.com/#juices-section"
+        }
+      ]
+    }
+    </script>
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fredoka:wght@600;700&family=Inter:wght@300;400;600&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css" />
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- Lenis Momentum Scroll Engine -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  </head>
+  <body>
+    <!-- Juicy Preloader -->
+    <div id="juice-loader">
+      <div class="loader-content">
+        <div class="loader-fruit">
+          <div class="fruit-liquid"></div>
+        </div>
+        <div class="loader-text">
+          <span class="load-m">M</span><span class="load-w">W</span><span class="load-p">P</span>
+          <div class="load-status">Cold-Pressing Perfection...</div>
+          <div class="load-percentage">0%</div>
+        </div>
+      </div>
+    </div>
+    <header>
+      <!-- Liquid Capsule Navigation -->
+      <nav class="liquid-nav" aria-label="Main Navigation">
+
+        <!-- Hamburger Menu for Mobile -->
+        <div class="mobile-menu-trigger" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="nav-island-links" id="main-nav-links">
+          <div class="nav-capsule"><a href="#">Home</a></div>
+          <div class="nav-capsule"><a href="#juices-section">Collection</a></div>
+          <div class="nav-capsule"><a href="#about-section">Our Story</a></div>
+          <div class="nav-capsule"><a href="#contact-section">Support</a></div>
+        </div>
+
+        <!-- Profile / Delivery Island -->
+        <div class="nav-island-user" id="profile-trigger" title="User Profile" aria-label="User Profile" style="position: relative; overflow: hidden;">
+          <svg id="nav-user-svg" viewBox="0 0 24 24" class="user-svg">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
+          </svg>
+          <img id="nav-user-avatar" src="" alt="User Avatar" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; display: none; z-index: 5;" />
+        </div>
+
+        <!-- Separate Cart Island on the Right -->
+        <div class="nav-island-cart" id="cart-trigger" aria-label="Shopping Basket">
+          <div class="cart-icon-wrap">
+            <svg viewBox="0 0 24 24" class="basket-svg">
+              <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" fill="currentColor"/>
+            </svg>
+            <span class="cart-badge" id="cart-badge">0</span>
+          </div>
+          <span class="cart-label">Basket</span>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+    
+    <!-- The hero section wrapper that ensures a large scrollable area -->
+    <section class="hero-scroll-container">
+      
+      <!-- The element that pins/sticks to the top while scrolling -->
+      <div class="hero-sticky-content">
+        
+        <div class="hero-layout">
+          <!-- Left side: Text -->
+          <div class="hero-text-panel">
+            <h1 class="hero-heading">
+              <span class="letter-m">M</span><span class="letter-w">W</span><span class="letter-p">P</span>
+              <span class="juice-text">Juice</span>
+            </h1>
+            <p class="hero-subtitle">"Refresh your thirst with nature's vibrant burst."</p>
+            <div class="hero-actions">
+              <button class="hero-cta" onclick="document.getElementById('juices-section').scrollIntoView({behavior: 'smooth'})">Signature Blends</button>
+              <a href="https://wa.me/9188072646" target="_blank" class="hero-secondary-link">Daily Subscriptions &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Right side: Canvas for animation -->
+          <div class="hero-animation-panel">
+            <canvas id="hero-canvas"></canvas>
+          </div>
+        </div>
+
+        <!-- Unified Storytelling Text Removed -->
+
+
+      </div>
+    </section>
+
+    <!-- Juices Product Showcase Section -->
+    <section class="products-section" id="juices-section">
+      <div class="products-header">
+        <h2 class="section-title">Our Signature Blends</h2>
+        <p class="section-subtitle">Pure, Cold-Pressed, and Vibrantly Refreshing</p>
+      </div>
+      <div class="product-grid" id="product-grid">
+        <!-- Products injected via Javascript -->
+      </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about-section" id="about-section">
+      <div class="about-container">
+        
+        <div class="about-header reveal-up">
+          <h2 class="about-title">The Essence of <span>Perfect Extraction</span></h2>
+          <p class="about-lead">We don't just juice; we capture the vibrant pulse of nature. MWP was born from a singular obsession with liquid perfection.</p>
+        </div>
+
+        <div class="bento-grid">
+          
+          <!-- Bento Box 1: Visual Art -->
+          <div class="bento-card bento-visual reveal-up" style="transition-delay: 0.1s;">
+            <img src="/about_mixed_fruit.png" alt="Pure Mixed Fruit Macro" class="bento-img" />
+            <div class="bento-visual-overlay">
+              <span class="bento-badge">Premium Grade</span>
+            </div>
+          </div>
+
+          <!-- Bento Box 2: Extraction -->
+          <div class="bento-card bento-feature reveal-up" style="transition-delay: 0.2s;">
+            <div class="bento-icon-wrap">❄️</div>
+            <h3>Sub-Zero Extraction</h3>
+            <p>Our advanced cold-press technology ensures 100% of enzymes and vital nutrients remain completely intact at freezing temperatures.</p>
+          </div>
+
+          <!-- Bento Box 3: Organic Stat -->
+          <div class="bento-card bento-stat bento-highlight reveal-up" style="transition-delay: 0.3s;">
+            <div class="stat-huge">100%</div>
+            <div class="stat-text">Certified Organic Quality</div>
+          </div>
+
+          <!-- Bento Box 4: Farm to bottle -->
+          <div class="bento-card bento-feature reveal-up" style="transition-delay: 0.4s;">
+            <div class="bento-icon-wrap">🌿</div>
+            <h3>Farm-to-Bottle</h3>
+            <p>Sourced selectively from local growers and cold-pressed within exactly 24 hours of harvest for absolute vibrance.</p>
+          </div>
+
+          <!-- Bento Box 5: No Sugar Stat -->
+          <div class="bento-card bento-stat reveal-up" style="transition-delay: 0.5s;">
+            <div class="stat-huge">0%</div>
+            <div class="stat-text">Added Sugars & Preservatives</div>
+          </div>
+          
+          <!-- Bento Box 6: 8K Purity -->
+          <div class="bento-card bento-feature bento-wide reveal-up" style="transition-delay: 0.6s;">
+            <div class="bento-split">
+              <div class="bento-split-text">
+                <div class="bento-icon-wrap">💧</div>
+                <h3>Molecular Purity</h3>
+                <p>Crystal-clear hydration filtered to incredible perfection. Every bottle represents a masterpiece of nature's design, delivered straight to you.</p>
+              </div>
+              <div class="bento-split-visual">
+                <!-- Abstract visual representation -->
+                <div class="purity-rings">
+                  <div class="ring"></div>
+                  <div class="ring"></div>
+                  <div class="ring"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact-section">
+      <div class="products-header reveal-up" style="margin-bottom: 4rem;">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">Reach out to us for premium cold-pressed refreshment</p>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info-panel reveal-up">
+          <div class="splash-card">
+            <img src="/contact_juice_splash.png" alt="Juice Splash" class="splash-img" />
+          </div>
+          <div class="info-content">
+            <h3 style="font-family: 'Fredoka', sans-serif; font-size: 1.8rem; margin-bottom: 0.5rem; color: #111;">Connect With Us</h3>
+            <p style="color: #666; margin-bottom: 2rem;">Ready for a daily burst of vitality? Our team is always here to make your juice experience perfect.</p>
+            
+            <div class="contact-info-list">
+              <div class="info-link">
+                <span class="info-icon">📞</span>
+                <div>
+                  <label>WhatsApp / Mobile</label>
+                  <span>9188072646</span>
+                </div>
+              </div>
+              <div class="info-link">
+                <span class="info-icon">✉️</span>
+                <div>
+                  <label>Premium Support</label>
+                  <span>rikkas.aboo@gmail.com</span>
+                </div>
+              </div>
+              <div class="info-link">
+                <span class="info-icon">📍</span>
+                <div>
+                  <label>The Lab</label>
+                  <span>Kasaragod, Kerala</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <a href="https://instagram.com/r__k_a_x" target="_blank" class="social-icon">Instagram</a>
+              <a href="https://wa.me/9188072646" target="_blank" class="social-icon">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-panel reveal-up">
+          <div class="contact-card">
+            <form class="contact-form">
+              <div class="form-group">
+                <input type="text" placeholder="Your Name" required />
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="Your Email" required />
+              </div>
+              <div class="form-group">
+                <textarea placeholder="How can we help you stay refreshed?" rows="4"></textarea>
+              </div>
+              <button type="submit" class="contact-btn">Send Sensation</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    </main>
+
+    <!-- Prism Glass Footer Section -->
+    <footer class="main-footer">
+      <div class="footer-prism-bg"></div>
+      
+      <div class="footer-container">
+        <!-- Brand Panel -->
+        <div class="footer-panel brand-panel">
+          <div class="nav-logo">
+            <span class="nav-m">M</span><span class="nav-w">W</span><span class="nav-p">P</span>
+          </div>
+          <p class="brand-tagline">"Refresh your thirst with nature's vibrant burst."</p>
+          <div class="footer-social-minimal">
+            <a href="https://instagram.com/r__k_a_x" target="_blank" title="Instagram">Insta.</a>
+            <a href="https://wa.me/9188072646" target="_blank" title="WhatsApp">Chat.</a>
+          </div>
+        </div>
+        
+        <!-- Navigation Panel -->
+        <div class="footer-panel links-panel">
+          <h4 class="panel-title">Explore</h4>
+          <ul class="prism-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#juices-section">Signature Juices</a></li>
+            <li><a href="#about-section">Our Mission</a></li>
+            <li><a href="#contact-section">Reach Out</a></li>
+          </ul>
+        </div>
+        
+        <!-- Experience Panel -->
+        <div class="footer-panel exp-panel">
+          <h4 class="panel-title">Pure Experience</h4>
+          <div class="exp-tags">
+            <span class="exp-tag">Cold-Pressed</span>
+            <span class="exp-tag">100% Organic</span>
+            <span class="exp-tag">Always Fresh</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          &copy; 2024 <span class="brand-span">MWP Juice</span>. Handcrafted in <span class="location-span">Kasaragod, Kerala</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Product Details Modal -->
+    <div id="product-modal" class="modal-overlay">
+      <div class="modal-content">
+        <button id="modal-close" class="modal-close-btn">&times;</button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <!-- Auth Selection Modal (When clicking profile icon and NOT logged in) -->
+    <div id="auth-selection-modal" class="modal-overlay">
+      <div class="modal-content" style="max-width: 450px; padding: 3rem; text-align: center;">
+        <button id="auth-selection-close" class="modal-close-btn">&times;</button>
+        <div class="modal-header" style="margin-bottom: 2.5rem;">
+          <h3 style="font-family: 'Fredoka', sans-serif; font-size: 2.2rem; color: #111;">Welcome</h3>
+          <p style="color:#666; font-size: 1.1rem; margin-top: 0.5rem;">Join the MWP Juice Family or login if you already have an account.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <button id="btn-goto-login" class="contact-btn" style="width: 100%; margin-top: 0; background: #111; box-shadow: none;">Login</button>
+          <button id="btn-goto-register" class="contact-btn" style="width: 100%; margin-top: 0;">Create Account</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal-overlay">
+      <div class="modal-content" style="max-width: 450px; padding: 3rem;">
+        <button id="login-close" class="modal-close-btn">&times;</button>
+        <div class="modal-header" style="margin-bottom: 2rem;">
+          <h3 style="font-family: 'Fredoka', sans-serif; font-size: 2rem; color: #111;">Login</h3>
+          <p style="color:#666;">Welcome back! Enter your details.</p>
+        </div>
+        <form id="login-form" class="contact-form" style="display:flex; flex-direction:column; gap: 1rem;">
+          <input type="email" id="login-email" placeholder="Email Address" required />
+          <input type="password" id="login-password" placeholder="Password" required />
+          <button type="submit" class="contact-btn" style="margin-top: 1rem;">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Sign In / Delivery Profile Modal (Registration) -->
+    <div id="profile-modal" class="modal-overlay">
+      <div class="modal-content" style="max-width: 650px; padding: 3rem;">
+        <button id="profile-close" class="modal-close-btn">&times;</button>
+        <div class="modal-header" style="margin-bottom: 2rem;">
+          <h3 style="font-family: 'Fredoka', sans-serif; font-size: 2rem; color: #111;">Create Account</h3>
+          <p style="color:#666;">Enter your details for a seamless personalized ordering experience.</p>
+        </div>
+        <form id="profile-form" class="contact-form" style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <input type="text" id="prof-name" placeholder="Full Name" required style="grid-column: span 1;" />
+          <input type="tel" id="prof-mobile" placeholder="Mobile Number" required style="grid-column: span 1;" />
+          <input type="email" id="prof-email" placeholder="Email Address" required style="grid-column: span 1;" />
+          <input type="date" id="prof-date" required title="Preferred Delivery Date" style="grid-column: span 1;" />
+          <textarea id="prof-place" placeholder="Delivery Address / Place" rows="3" required style="grid-column: 1 / -1;"></textarea>
+          <input type="password" id="prof-password" placeholder="Password" required style="grid-column: span 1;" />
+          <input type="password" id="prof-confirm-password" placeholder="Confirm Password" required style="grid-column: span 1;" />
+          <button type="submit" class="contact-btn" style="grid-column: 1 / -1; margin-top: 1rem;">Create Account & Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Logged in User Profile Modal -->
+    <div id="user-profile-modal" class="modal-overlay">
+      <div class="modal-content" style="max-width: 500px; padding: 3rem;">
+        <button id="user-profile-close" class="modal-close-btn">&times;</button>
+        <div class="modal-header" style="margin-bottom: 2rem; text-align: center;">
+          <div class="profile-avatar-wrap" style="position: relative; width: 120px; height: 120px; margin: 0 auto 1rem auto; display: flex; align-items: center; justify-content: center;">
+            <div style="width: 100%; height: 100%; overflow: hidden; border-radius: 50%; background: #f4f4f4; border: 3px solid #5AF022; display: flex; align-items: center; justify-content: center;">
+              <img id="display-user-avatar" src="" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover; display: none; position: relative; z-index: 2;" />
+              <div id="avatar-placeholder" style="font-size: 3.5rem; position: absolute; z-index: 1;">👤</div>
+            </div>
+            
+            <div id="avatar-add-hint" style="position: absolute; bottom: 0px; right: 0px; width: 34px; height: 34px; background: #111; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.4rem; border: 3px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 5; pointer-events: none;">+</div>
+            
+            <input type="file" id="upload-avatar" accept="image/*" style="opacity: 0; position: absolute; inset: 0; z-index: 10; cursor: pointer;" title="Upload Profile Picture" />
+          </div>
+          <h3 id="display-user-name" style="font-family: 'Fredoka', sans-serif; font-size: 2.2rem; color: #111;">User</h3>
+          <p id="display-user-email" style="color:#666;">email@example.com</p>
+        </div>
+        
+        <div class="profile-info-card" style="background: #f8f8fa; padding: 1.5rem; border-radius: 20px; margin-bottom: 2rem; text-align: center;">
+          <p><strong>Mobile:</strong> <span id="display-user-mobile"></span></p>
+        </div>
+
+        <button id="btn-logout" class="contact-btn" style="width: 100%; background: #111; box-shadow: none;">Log Out</button>
+      </div>
+    </div>
+
+    <!-- PRISM BASKET OVERLAY -->
+    <div id="cart-panel" class="cart-panel">
+      <div class="cart-panel-inner">
+        <div class="cart-panel-header">
+          <h2>Your Selection</h2>
+          <button id="cart-close" class="cart-close-btn">&times;</button>
+        </div>
+        
+        <div id="cart-items-list" class="cart-items-list">
+          <div class="cart-empty-msg">Your basket is waiting for a burst of flavor.</div>
+        </div>
+
+        <div class="cart-panel-footer">
+          <div class="cart-total-row">
+            <span>Subtotal</span>
+            <span id="cart-total-price">₹0</span>
+          </div>
+          <button id="checkout-btn" class="checkout-btn">Proceed to Experience</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

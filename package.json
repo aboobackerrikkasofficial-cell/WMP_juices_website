@@ -1,0 +1,15 @@
+{
+  "name": "uyc-mobiles",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "jimp": "^0.22.12",
+    "vite": "^5.0.0"
+  }
+}
