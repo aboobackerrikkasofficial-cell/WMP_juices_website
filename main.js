@@ -1,7 +1,7 @@
 const frameCount = 105; // Updated sequence after user optimization
 const getFramePath = (index) => {
   // Mapping to the verified high-quality frames folder
-  return `/watermelon_permanent_frames/ezgif-frame-${index.toString().padStart(3, '0')}.png`;
+  return `/public/watermelon_permanent_frames/ezgif-frame-${index.toString().padStart(3, '0')}.png`;
 };
 
 // DOM Elements
@@ -272,7 +272,7 @@ const productsData = [
     desc: "Nature's hydration miracle. Cold-pressed to perfection.",
     priceOrig: "₹60",
     priceDisc: "₹40",
-    image: "/product-images/watermelon-juice.png",
+    image: "/public/product-images/watermelon-juice.png",
     specs: [
       { label: "Hydration", value: "92% Water Content" },
       { label: "Vitamins", value: "Vitamin C, A, & Lycopene" },
@@ -285,7 +285,7 @@ const productsData = [
     desc: "The king of fruits, captured in a luscious, velvety blend.",
     priceOrig: "₹60",
     priceDisc: "₹40",
-    image: "/product-images/mango-juice.png",
+    image: "/public/product-images/mango-juice.png",
     specs: [
       { label: "Immune Boost", value: "High Vitamin C & Beta-Carotene" },
       { label: "Digestion", value: "Natural Amylase Enzymes" },
@@ -298,7 +298,7 @@ const productsData = [
     desc: "Tropical sunshine with a vibrant, anti-inflammatory kick.",
     priceOrig: "₹60",
     priceDisc: "₹40",
-    image: "/product-images/pineapple-juice.png",
+    image: "/public/product-images/pineapple-juice.png",
     specs: [
       { label: "Enzymes", value: "Potent Bromelain Content" },
       { label: "Immune", value: "Daily dose of Vitamin C" },
